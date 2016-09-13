@@ -1,0 +1,35 @@
+<header class="intro-header" style="background-image: url( <%= @blog_post.title_image_url %>)">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="page-heading">
+                <h1><%= @blog_post.title %></h1>
+                <hr class="small">
+                <span class="subheading"><%= @blog_post.summary %></span>
+                  <span class="meta">
+                    Posted by <a href="#"><%= @user.name %></a> 
+                    on <%= @blog_post.created_at.strftime('%c') %>
+                  </span>
+              </div>
+          </div>
+      </div>
+  </div>
+</header>
+
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+        <br />
+        <%= link_to 'Edit', edit_blog_post_path(@blog_post) %>
+        <%= link_to "Delete", @blog_post, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+        <p><%= @blog_post.content %></p>
+
+        <br />
+          <%= link_to 'Back to Blogposts', blog_posts_path %>
+        </div>
+    </div>
+</div>

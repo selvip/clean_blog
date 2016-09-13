@@ -1,0 +1,11 @@
+<%= form_for(@user) do |f| %>
+  <div class="row control-group">
+    <div class="form-group col-xs-12 floating-label-form-group controls">
+        <p><%= f.text_field :name, placeholder: "Name" %></p>
+        <p style="color:red;"><%= @user.errors.full_messages_for(:name).join(", ") if @user.errors.include?(:name)%></p>
+        <p><%= f.text_field :email, placeholder: "Email" %></p>
+        <p style="color:red;"><%= @user.errors.full_messages_for(:email).join(", ") if @user.errors.include?(:email)%></p>
+        <p><%= f.submit "Submit", class:"btn btn-default" %></p>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,25 @@
+<br />
+<%= form_for(@blog_post) do |f| %>
+  <div class="row control-group">
+    <div class="form-group col-xs-12 floating-label-form-group controls">
+      <p><%= f.text_field :title, placeholder: "Title", size: "50" %></p>
+      <p style="color:red;"><%= @blog_post.errors.full_messages_for(:title).join(", ") if @blog_post.errors.include?(:title)%></p>
+      <p><%= f.text_area :summary, placeholder: "Summary", size: "50x2" %></p>
+      <p><%= f.text_area :content, placeholder: "Content", size: "50x5" %></p>
+      <p style="color:red;"><%= @blog_post.errors.full_messages_for(:content).join(", ") if @blog_post.errors.include?(:content)%></p>
+      <p>
+        User:
+        <%= f.select(:user_id) do %>
+          <% User.all.each do |user| %>
+            <%= content_tag(:option, user.name, value: user.id) %>
+          <% end %>
+        <% end %>
+      </p>
+      <p><%= f.text_field :title_image_url, placeholder: "Image URL" %></p>
+      <p style="color:red;"><%= f.submit "Post", class:"btn btn-default" %></p>
+    </div>
+  </div>
+<% end %>
+
+
+

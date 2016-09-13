@@ -1,0 +1,43 @@
+<header class="intro-header" style="background-image: url('/assets/post-bg.jpg')">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="page-heading">
+                  <h1>Clean Blog</h1>
+                  <hr class="small">
+                  <span class="subheading">List of Posts</span>
+              </div>
+          </div>
+      </div>
+  </div>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <b style="color:red;"><%= link_to 'Create New Post', new_blog_post_path %></b>
+
+          <% @blog_posts.each do |blog_post| %>
+            <div class="post-preview">
+
+              <%= link_to(blog_post_path(blog_post)) do %>
+                <h2 class="post-title">
+                  <%= blog_post.title %>
+                </h2>
+                
+                <h3 class="post-subtitle">
+                 <%= blog_post.summary %>
+                </h3>                
+              <% end %>              
+
+              
+
+              <p class="post-meta">Posted by <%= blog_post.user.try(:name) %> on <%= blog_post.created_at.localtime.strftime('%c') %></p>
+            </div>
+          <% end %>
+        </div>
+
+
+    </div>
+</div>
+

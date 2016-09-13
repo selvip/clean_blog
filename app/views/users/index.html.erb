@@ -1,0 +1,51 @@
+<header class="intro-header" style="background-image: url('/assets/about-bg.jpg')">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="page-heading">
+                  <h1>Clean Blog</h1>
+                  <hr class="small">
+                  <span class="subheading">List of Users</span>
+              </div>
+          </div>
+      </div>
+  </div>
+</header>
+
+
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <b style="color:red;"><%= link_to 'Create New User', new_user_path %></b>
+
+          <table width="100%">
+            <tr style="background-color: gray;
+            color:white;">
+              <td>ID</td>
+              <td width="20%">Name</td>
+              <td width="20%">Email</td>
+              <td>Created at</td>
+              <td>Updated at</td>
+              <td colspan="2" width="20%">Action</td>
+            </tr>
+
+            <% @users.each do |user| %>
+              <tr>
+                <td><%= user.id %></td>              
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.created_at.localtime.strftime('%c') %></td>
+                <td><%= user.updated_at.localtime.strftime('%c') %></td>
+                <td><%= link_to 'Edit',edit_user_path(user) %></td>
+                <td>
+                  <%= link_to "Delete", user, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+                </td>                
+              </tr>
+            <% end %>
+          </table>
+        </div>
+    </div>
+</div>
